@@ -1,9 +1,9 @@
+import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Features } from "@/components/features"
 import { Stats } from "@/components/stats"
+import { Features } from "@/components/features"
 import { Projects } from "@/components/projects"
 import { CTA } from "@/components/cta"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
