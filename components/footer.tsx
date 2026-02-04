@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Zap } from "lucide-react"
 
 const footerLinks = {
   Platform: [
@@ -9,51 +8,72 @@ const footerLinks = {
     { label: "Pricing", href: "#" },
   ],
   Company: [
-    { label: "About Us", href: "#" },
+    { label: "About", href: "#" },
+    { label: "Team", href: "#" },
     { label: "Careers", href: "#" },
     { label: "Press", href: "#" },
-    { label: "Contact", href: "#" },
   ],
   Resources: [
     { label: "Blog", href: "#" },
     { label: "Help Center", href: "#" },
-    { label: "FAQs", href: "#" },
-    { label: "Developer API", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Securities Disclosure", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { label: "API Docs", href: "#" },
+    { label: "Contact", href: "#" },
   ],
 }
 
+const legalLinks = [
+  { label: "Terms", href: "#" },
+  { label: "Privacy", href: "#" },
+  { label: "Disclosures", href: "#" },
+]
+
+const socialLinks = [
+  { label: "Twitter", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "GitHub", href: "#" },
+]
+
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary/30">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
+    <footer className="border-t border-border bg-primary text-primary-foreground">
+      <div className="container mx-auto px-4 py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Zap className="h-5 w-5 text-primary-foreground" />
+            <Link href="/" className="flex items-center gap-2.5 mb-6">
+              <div className="flex h-8 w-8 items-center justify-center rounded bg-primary-foreground">
+                <svg viewBox="0 0 24 24" className="h-4 w-4 text-primary" fill="currentColor">
+                  <rect x="4" y="4" width="7" height="7" />
+                  <rect x="13" y="4" width="7" height="7" />
+                  <rect x="4" y="13" width="7" height="7" />
+                </svg>
               </div>
-              <span className="text-xl font-bold text-foreground">Energy Spark</span>
+              <span className="text-lg font-semibold tracking-tight">Energy Spark</span>
             </Link>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Empowering everyday investors to fund the clean energy transition and earn sustainable returns.
+            <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mb-8">
+              Empowering investors to fund the clean energy transition while earning sustainable returns.
             </p>
+            <div className="flex gap-6">
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="mb-4 text-sm font-semibold text-foreground">{category}</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/50">{category}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -64,13 +84,21 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-primary-foreground/10 pt-8 md:flex-row">
+          <p className="text-sm text-primary-foreground/50">
             &copy; {new Date().getFullYear()} Energy Spark Fund. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground max-w-md text-center md:text-right">
-            Investing involves risk. Past performance is not indicative of future results.
-          </p>
+          <div className="flex gap-6">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm text-primary-foreground/50 hover:text-primary-foreground/70 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

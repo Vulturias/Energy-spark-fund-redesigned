@@ -3,42 +3,46 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <Zap className="h-5 w-5 text-primary-foreground" />
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded bg-primary">
+            <svg viewBox="0 0 24 24" className="h-4 w-4 text-primary-foreground" fill="currentColor">
+              <rect x="4" y="4" width="7" height="7" />
+              <rect x="13" y="4" width="7" height="7" />
+              <rect x="4" y="13" width="7" height="7" />
+            </svg>
           </div>
-          <span className="text-xl font-bold text-foreground">Energy Spark</span>
+          <span className="text-lg font-semibold tracking-tight text-foreground">Energy Spark</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Features
+        <nav className="hidden md:flex items-center gap-10">
+          <Link href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Solutions
           </Link>
           <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Projects
           </Link>
           <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            About
+            Company
           </Link>
-          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Contact
+          <Link href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Resources
           </Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">
-            Sign In
-          </Button>
-          <Button size="sm">
-            Get Started
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Log in
+          </Link>
+          <Button className="rounded-full px-6">
+            Request Access
           </Button>
         </div>
 
@@ -58,24 +62,24 @@ export function Header() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-border bg-background">
           <nav className="container mx-auto flex flex-col gap-4 p-4">
-            <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Features
+            <Link href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-foreground py-2">
+              Solutions
             </Link>
-            <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground py-2">
               Projects
             </Link>
-            <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              About
+            <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground py-2">
+              Company
             </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Contact
+            <Link href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground py-2">
+              Resources
             </Link>
-            <div className="flex flex-col gap-2 pt-4 border-t border-border">
-              <Button variant="ghost" size="sm" className="justify-start">
-                Sign In
-              </Button>
-              <Button size="sm">
-                Get Started
+            <div className="flex flex-col gap-3 pt-4 border-t border-border">
+              <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground py-2">
+                Log in
+              </Link>
+              <Button className="rounded-full">
+                Request Access
               </Button>
             </div>
           </nav>
